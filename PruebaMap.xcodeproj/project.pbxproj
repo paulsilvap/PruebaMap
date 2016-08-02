@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		380FB275225FF40826084DF4 /* Pods_PruebaMapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1DBF9D2C4D99A06A87F2259 /* Pods_PruebaMapTests.framework */; };
+		815CCFBC1D512A1A00527260 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 815CCFBB1D512A1A00527260 /* Images */; };
 		81B9E74B1D4BF68200567D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9E74A1D4BF68200567D1C /* AppDelegate.swift */; };
 		81B9E74D1D4BF68200567D1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9E74C1D4BF68200567D1C /* ViewController.swift */; };
 		81B9E7501D4BF68200567D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81B9E74E1D4BF68200567D1C /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		49C67070214A1B886C91D8F7 /* Pods_PruebaMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PruebaMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D1F4ABAF84A77693B476DE5 /* Pods-PruebaMapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PruebaMapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PruebaMapTests/Pods-PruebaMapTests.release.xcconfig"; sourceTree = "<group>"; };
+		815CCFBB1D512A1A00527260 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Images; path = ../../../Images; sourceTree = "<group>"; };
 		81B9E7471D4BF68200567D1C /* PruebaMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PruebaMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81B9E74A1D4BF68200567D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81B9E74C1D4BF68200567D1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				81B9E7511D4BF68200567D1C /* Assets.xcassets */,
 				81B9E7531D4BF68200567D1C /* LaunchScreen.storyboard */,
 				81B9E7561D4BF68200567D1C /* Info.plist */,
+				815CCFBB1D512A1A00527260 /* Images */,
 			);
 			path = PruebaMap;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815CCFBC1D512A1A00527260 /* Images in Resources */,
 				81B9E7551D4BF68200567D1C /* LaunchScreen.storyboard in Resources */,
 				81B9E7521D4BF68200567D1C /* Assets.xcassets in Resources */,
 				81B9E7501D4BF68200567D1C /* Main.storyboard in Resources */,
