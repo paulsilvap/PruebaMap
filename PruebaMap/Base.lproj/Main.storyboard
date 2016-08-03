@@ -22,18 +22,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfY-0c-jNz" customClass="GMSMapView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                        <subviews>
-                                            <searchBar opaque="NO" contentMode="redraw" searchBarStyle="minimal" placeholder="Encuentre una parada" translatesAutoresizingMaskIntoConstraints="NO" id="kbU-4a-9ui">
-                                                <rect key="frame" x="8" y="16" width="584" height="44"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                            </searchBar>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="kbU-4a-9ui" firstAttribute="leading" secondItem="cfY-0c-jNz" secondAttribute="leading" constant="8" id="IoW-qm-Rjf"/>
-                                            <constraint firstAttribute="trailing" secondItem="kbU-4a-9ui" secondAttribute="trailing" constant="8" id="LEb-bI-Zi9"/>
-                                            <constraint firstItem="kbU-4a-9ui" firstAttribute="top" secondItem="cfY-0c-jNz" secondAttribute="top" constant="16" id="xsN-Hy-7TL"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -50,7 +39,6 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="mapView" destination="cfY-0c-jNz" id="cVS-d6-USh"/>
-                        <outlet property="searchBar" destination="kbU-4a-9ui" id="7Nn-Sv-aNh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
