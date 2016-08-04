@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  PruebaMap
 //
 //  Created by Paul Silva on 7/29/16.
@@ -10,8 +10,17 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class ViewController: UIViewController {
+@objc
+protocol MapViewControllerDelegate {
+    optional func toggleLeftPanel()
+    optional func toggleRightPanel()
+    optional func collapseSidePanels()
+}
+
+class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
+    
+    var delegate: MapViewControllerDelegate?
     
     override func loadView() {
         super.loadView()
@@ -54,7 +63,8 @@ class ViewController: UIViewController {
         calle_guzman.position = CLLocationCoordinate2DMake(0.418110, -78.193866)
         calle_guzman.title = "Calle Guzmán"
         calle_guzman.snippet = "Calle en la ciudad de Urcuquí"
-        calle_guzman.icon = UIImage(named: "sad_cloud_dark@2x.png")
+//        calle_guzman.icon = UIImage(named: "sadcloud")
+        calle_guzman.icon = UIImage(named: "downarrow")
         calle_guzman.map = mapView
     }
     
@@ -73,6 +83,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func menuTapped(sender: AnyObject) {
+    }
 
 }
 

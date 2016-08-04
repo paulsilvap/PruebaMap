@@ -21,6 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyA6povQOv9ZZ2Cybs5EHYnMa9I8Jk1nyQg")
         GMSPlacesClient.provideAPIKey("AIzaSyA6povQOv9ZZ2Cybs5EHYnMa9I8Jk1nyQg")
         
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let containerViewController = ContainerViewController()
+        
+        window!.rootViewController = containerViewController
+        window!.makeKeyAndVisible()
+        
         return true
     }
 
