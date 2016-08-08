@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6Gj-cc-DFO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,22 +19,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="abH-oz-sKD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfY-0c-jNz" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfY-0c-jNz" customClass="GMSMapView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="abH-oz-sKD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GNX-Th-2yp"/>
-                            <constraint firstItem="abH-oz-sKD" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ecf-cr-jyQ"/>
-                            <constraint firstAttribute="trailing" secondItem="abH-oz-sKD" secondAttribute="trailing" id="qDu-JR-RXq"/>
-                            <constraint firstItem="abH-oz-sKD" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="zin-HN-pnL"/>
+                            <constraint firstItem="cfY-0c-jNz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CKO-vM-YTU"/>
+                            <constraint firstItem="cfY-0c-jNz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Zdb-BS-Qy9"/>
+                            <constraint firstAttribute="trailing" secondItem="cfY-0c-jNz" secondAttribute="trailing" id="b93-6s-AJi"/>
+                            <constraint firstItem="cfY-0c-jNz" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="mga-eC-Ect"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Paradas" id="GRe-BK-xgg">
@@ -175,31 +170,64 @@
                     <view key="view" contentMode="scaleToFill" id="Fgg-oD-KUa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYv-Us-uMb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSA-JG-s0e">
+                                        <rect key="frame" x="38" y="93" width="554" height="30"/>
+                                        <state key="normal" title="Rutas">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sge-uS-RQo">
+                                        <rect key="frame" x="38" y="138" width="554" height="30"/>
+                                        <state key="normal" title="Itinerario">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWS-dW-5CU">
+                                        <rect key="frame" x="38" y="183" width="554" height="30"/>
+                                        <state key="normal" title="Opciones">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAp-ds-27j">
+                                        <rect key="frame" x="38" y="228" width="554" height="30"/>
+                                        <state key="normal" title="Calificación">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="dWS-dW-5CU" secondAttribute="trailing" id="6VX-Xu-j3f"/>
+                                    <constraint firstItem="sge-uS-RQo" firstAttribute="leading" secondItem="kYv-Us-uMb" secondAttribute="leadingMargin" constant="30" id="Ldw-bJ-2EB"/>
+                                    <constraint firstItem="HSA-JG-s0e" firstAttribute="top" secondItem="kYv-Us-uMb" secondAttribute="topMargin" constant="85" id="M0Q-9b-P0Y"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="eAp-ds-27j" secondAttribute="trailing" id="ady-7y-LzR"/>
+                                    <constraint firstItem="dWS-dW-5CU" firstAttribute="top" secondItem="sge-uS-RQo" secondAttribute="bottom" constant="15" id="e9u-NI-qmE"/>
+                                    <constraint firstItem="eAp-ds-27j" firstAttribute="leading" secondItem="kYv-Us-uMb" secondAttribute="leadingMargin" constant="30" id="ed1-ru-owt"/>
+                                    <constraint firstItem="sge-uS-RQo" firstAttribute="top" secondItem="HSA-JG-s0e" secondAttribute="bottom" constant="15" id="fTJ-Ve-HMh"/>
+                                    <constraint firstItem="dWS-dW-5CU" firstAttribute="leading" secondItem="kYv-Us-uMb" secondAttribute="leadingMargin" constant="30" id="n7J-4M-Dex"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="sge-uS-RQo" secondAttribute="trailing" id="sXh-Bv-hCh"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="HSA-JG-s0e" secondAttribute="trailing" id="tZn-tg-7K1"/>
+                                    <constraint firstItem="HSA-JG-s0e" firstAttribute="leading" secondItem="kYv-Us-uMb" secondAttribute="leadingMargin" constant="30" id="yYV-Gp-ggi"/>
+                                    <constraint firstItem="eAp-ds-27j" firstAttribute="top" secondItem="dWS-dW-5CU" secondAttribute="bottom" constant="15" id="z1o-G5-8bW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kYv-Us-uMb" secondAttribute="trailing" id="Wkr-y4-8SK"/>
+                            <constraint firstItem="kYv-Us-uMb" firstAttribute="bottom" secondItem="AoH-Ya-Aw5" secondAttribute="top" id="oIu-0D-rcu"/>
+                            <constraint firstItem="kYv-Us-uMb" firstAttribute="top" secondItem="Fgg-oD-KUa" secondAttribute="top" id="sl9-oi-A0q"/>
+                            <constraint firstItem="kYv-Us-uMb" firstAttribute="leading" secondItem="Fgg-oD-KUa" secondAttribute="leading" id="uJG-g9-IAE"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXb-GF-aWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3630" y="361"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1mL-Pe-S8L">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Gj-cc-DFO" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ak-EB-4pT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.3411764705882353" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6yW-Nr-BY4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GxT-j8-dC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="310" y="361"/>
         </scene>
     </scenes>
 </document>

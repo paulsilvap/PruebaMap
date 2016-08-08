@@ -18,9 +18,15 @@ class ContainerViewController: UIViewController {
 
     var mapNavigationController: UINavigationController!
     var mapViewController: MapViewController!
-    var currentState: SlideOutState = .BothCollapsed
+    var currentState: SlideOutState = .BothCollapsed {
+        didSet {
+            let shouldShowShadow = currentState != .BothCollapsed
+            showShadowForMapViewController(shouldShowShadow)
+        }
+    }
     var leftViewController: SidePanelViewController?
-    let centerPanelExpandedOffSet: CGFloat = 180
+    let mapPanelExpandedOffSet: CGFloat = 180
+    var barColor: UIColor? = UIColor(red: 1, green: 87/255, blue: 34/255, alpha: 1)
     
     override func loadView() {
         super.loadView()
@@ -33,17 +39,19 @@ class ContainerViewController: UIViewController {
         view.addSubview(mapNavigationController.view)
         addChildViewController(mapNavigationController)
         
+        mapNavigationController.navigationBar.barTintColor = barColor
         mapNavigationController.didMoveToParentViewController(self)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ContainerViewController.handlePanGesture(_:)))
+        mapNavigationController.view.addGestureRecognizer(panGestureRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
@@ -65,14 +73,12 @@ extension ContainerViewController: MapViewControllerDelegate {
     func addLeftPanelViewController() {
         if (leftViewController == nil) {
             leftViewController = UIStoryboard.leftViewController()
-            
             addChildSidePanelController(leftViewController!)
         }
     }
     
     func addChildSidePanelController(sidePanelController: SidePanelViewController) {
         view.insertSubview(sidePanelController.view, atIndex: 0)
-        
         addChildViewController(sidePanelController)
         sidePanelController.didMoveToParentViewController(self)
     }
@@ -80,12 +86,11 @@ extension ContainerViewController: MapViewControllerDelegate {
     func animateLeftPanel(shouldExpand: Bool) {
         if (shouldExpand) {
             currentState = .LeftPanelExpanded
-            
-            animateMapPanelXPosition(CGRectGetWidth(mapNavigationController.view.frame) - centerPanelExpandedOffSet)
+//            animateMapPanelXPosition(CGRectGetWidth(mapNavigationController.view.frame) - mapPanelExpandedOffSet)
+            animateMapPanelXPosition(mapPanelExpandedOffSet)
         } else {
             animateMapPanelXPosition(0) { finished in
                 self.currentState = .BothCollapsed
-                
                 self.leftViewController!.view.removeFromSuperview()
                 self.leftViewController = nil;
             }
@@ -98,6 +103,45 @@ extension ContainerViewController: MapViewControllerDelegate {
             self.mapNavigationController.view.frame.origin.x = targetPosition
             }, completion: completion)
 
+    }
+    
+    func showShadowForMapViewController(shouldShowShadow: Bool) {
+        if (shouldShowShadow) {
+            mapNavigationController.view.layer.shadowOpacity = 0.8
+        } else {
+            mapNavigationController.view.layer.shadowOpacity = 0.0
+        }
+    }
+    
+    
+}
+
+extension ContainerViewController: UIGestureRecognizerDelegate {
+    // MARK: Gesture recognizer
+    
+    func handlePanGesture(recognizer: UIPanGestureRecognizer) {
+        let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
+        
+        switch(recognizer.state) {
+        case .Began:
+            if (currentState == .BothCollapsed) {
+                if (gestureIsDraggingFromLeftToRight) {
+                    addLeftPanelViewController()
+                }
+                showShadowForMapViewController(true)
+            }
+        case .Changed:
+            recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
+            recognizer.setTranslation(CGPointZero, inView: view)
+        case .Ended:
+            if (leftViewController != nil) {
+                // animate the side panel open or closed based on whether the view has moved more or less than halfway
+                let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
+                animateLeftPanel(hasMovedGreaterThanHalfway)
+            }
+        default:
+            break
+        }
     }
     
 }
