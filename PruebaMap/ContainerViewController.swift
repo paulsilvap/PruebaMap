@@ -9,10 +9,18 @@
 import UIKit
 import QuartzCore
 
+enum SlideOutState {
+    case BothCollapsed
+    case LeftPanelExpanded
+}
+
 class ContainerViewController: UIViewController {
 
     var mapNavigationController: UINavigationController!
     var mapViewController: MapViewController!
+    var currentState: SlideOutState = .BothCollapsed
+    var leftViewController: SidePanelViewController?
+    let centerPanelExpandedOffSet: CGFloat = 180
     
     override func loadView() {
         super.loadView()
@@ -40,40 +48,66 @@ class ContainerViewController: UIViewController {
 
 }
 
-// MARK: CenterViewController delegate
+// MARK: MapViewController delegate
 
 extension ContainerViewController: MapViewControllerDelegate {
     
     func toggleLeftPanel() {
-    }
-    
-    func toggleRightPanel() {
+        let notAlreadyExpanded = (currentState != .LeftPanelExpanded)
+        
+        if notAlreadyExpanded {
+            addLeftPanelViewController()
+        }
+        
+        animateLeftPanel(notAlreadyExpanded)
     }
     
     func addLeftPanelViewController() {
+        if (leftViewController == nil) {
+            leftViewController = UIStoryboard.leftViewController()
+            
+            addChildSidePanelController(leftViewController!)
+        }
     }
     
-    func addRightPanelViewController() {
+    func addChildSidePanelController(sidePanelController: SidePanelViewController) {
+        view.insertSubview(sidePanelController.view, atIndex: 0)
+        
+        addChildViewController(sidePanelController)
+        sidePanelController.didMoveToParentViewController(self)
     }
     
-//    func animateLeftPanel(#shouldExpand: Bool) {
-//    }
-//    
-//    func animateRightPanel(#shouldExpand: Bool) {
-//    }
-//    
+    func animateLeftPanel(shouldExpand: Bool) {
+        if (shouldExpand) {
+            currentState = .LeftPanelExpanded
+            
+            animateMapPanelXPosition(CGRectGetWidth(mapNavigationController.view.frame) - centerPanelExpandedOffSet)
+        } else {
+            animateMapPanelXPosition(0) { finished in
+                self.currentState = .BothCollapsed
+                
+                self.leftViewController!.view.removeFromSuperview()
+                self.leftViewController = nil;
+            }
+        }
+        
+    }
+    
+    func animateMapPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping:0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
+            self.mapNavigationController.view.frame.origin.x = targetPosition
+            }, completion: completion)
+
+    }
+    
 }
 
 private extension UIStoryboard {
     class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
     
-//    class func leftViewController() -> SidePanelViewController? {
-//        return mainStoryboard().instantiateViewControllerWithIdentifier("LeftViewController") as? SidePanelViewController
-//    }
-//    
-//    class func rightViewController() -> SidePanelViewController? {
-//        return mainStoryboard().instantiateViewControllerWithIdentifier("RightViewController") as? SidePanelViewController
-//    }
+    class func leftViewController() -> SidePanelViewController? {
+        return mainStoryboard().instantiateViewControllerWithIdentifier("SidePanelViewController") as? SidePanelViewController
+    }
     
     class func mapViewController() -> MapViewController? {
         return mainStoryboard().instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController

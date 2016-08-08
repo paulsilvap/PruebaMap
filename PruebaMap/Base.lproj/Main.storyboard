@@ -167,7 +167,7 @@
         <!--Side Panel View Controller-->
         <scene sceneID="wxx-zj-3by">
             <objects>
-                <viewController id="t4I-mo-uHi" customClass="SidePanelViewController" customModule="PruebaMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SidePanelViewController" id="t4I-mo-uHi" customClass="SidePanelViewController" customModule="PruebaMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6nO-WG-QRJ"/>
                         <viewControllerLayoutGuide type="bottom" id="AoH-Ya-Aw5"/>
