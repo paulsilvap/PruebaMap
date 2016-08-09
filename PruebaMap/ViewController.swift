@@ -12,10 +12,9 @@ import GooglePlaces
 
 class ViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
-    @IBOutlet weak var searchBar: UISearchBar!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    override func loadView() {
+        super.loadView()
         // Do any additional setup after loading the view, typically from a nib.
         let camera = GMSCameraPosition.cameraWithLatitude(0.419193, longitude: -78.189943, zoom: 14)
         mapView.camera = camera
@@ -37,11 +36,11 @@ class ViewController: UIViewController {
         mapView.settings.myLocationButton = true
         
         // The myLocation attribute of the mapView may be null
-        if let mylocation = mapView.myLocation {
-            print("User's location: \(mylocation)")
-        } else {
-            print("User's location is unknown")
-        }
+//        if let mylocation = mapView.myLocation {
+//            print("User's location: \(mylocation)")
+//        } else {
+//            print("User's location is unknown")
+//        }
         
         // marker
         let marker = GMSMarker()
@@ -55,12 +54,20 @@ class ViewController: UIViewController {
         calle_guzman.position = CLLocationCoordinate2DMake(0.418110, -78.193866)
         calle_guzman.title = "Calle Guzmán"
         calle_guzman.snippet = "Calle en la ciudad de Urcuquí"
-        //calle_guzman.icon = UIImage(named: "boat@2x.png")
+        calle_guzman.icon = UIImage(named: "sad_cloud_dark@2x.png")
         calle_guzman.map = mapView
-        
-        mapView.bringSubviewToFront(searchBar)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
