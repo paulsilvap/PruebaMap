@@ -18,6 +18,10 @@ class ContainerViewController: UIViewController {
 
     var mapNavigationController: UINavigationController!
     var mapViewController: MapViewController!
+    var itineraryViewController: ItineraryViewController!
+    var optionViewController: OptionViewController!
+    var rateViewController: RateViewController!
+    var routeViewController: RouteViewController!
     var currentState: SlideOutState = .BothCollapsed {
         didSet {
             let shouldShowShadow = currentState != .BothCollapsed
@@ -33,21 +37,25 @@ class ContainerViewController: UIViewController {
         mapViewController = UIStoryboard.mapViewController()
         mapViewController.delegate = self
         
-        // wrap the centerViewController in a navigation controller, so we can push views to it
-        // and display bar button items in the navigation bar
+        // wrap the mapViewController in a navigation controller, so we can push views to it and display bar button items in the navigation bar
         mapNavigationController = UINavigationController(rootViewController: mapViewController)
         view.addSubview(mapNavigationController.view)
         addChildViewController(mapNavigationController)
         
         mapNavigationController.navigationBar.barTintColor = barColor
         mapNavigationController.didMoveToParentViewController(self)
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ContainerViewController.handlePanGesture(_:)))
+        mapNavigationController.view.addGestureRecognizer(panGestureRecognizer)
+        
+        itineraryViewController = UIStoryboard.itineraryViewController()
+        itineraryViewController.delegate = self
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ContainerViewController.handlePanGesture(_:)))
-        mapNavigationController.view.addGestureRecognizer(panGestureRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,7 +94,6 @@ extension ContainerViewController: MapViewControllerDelegate {
     func animateLeftPanel(shouldExpand: Bool) {
         if (shouldExpand) {
             currentState = .LeftPanelExpanded
-//            animateMapPanelXPosition(CGRectGetWidth(mapNavigationController.view.frame) - mapPanelExpandedOffSet)
             animateMapPanelXPosition(mapPanelExpandedOffSet)
         } else {
             animateMapPanelXPosition(0) { finished in
@@ -156,5 +163,10 @@ private extension UIStoryboard {
     class func mapViewController() -> MapViewController? {
         return mainStoryboard().instantiateViewControllerWithIdentifier("MapViewController") as? MapViewController
     }
+    
+    class func itineraryViewController() -> ItineraryViewController? {
+        return           mainStoryboard().instantiateViewControllerWithIdentifier("ItineraryViewController") as? ItineraryViewController
+    }
+
     
 }
