@@ -41,7 +41,7 @@ class MapViewController: UIViewController {
         mapView.myLocationEnabled = true
         
         // enable My Location and Compass buttons
-        mapView.settings.compassButton = true
+        // mapView.settings.compassButton = true
         mapView.settings.myLocationButton = true
         
         // The myLocation attribute of the mapView may be null
@@ -84,6 +84,7 @@ class MapViewController: UIViewController {
     }
 
     @IBAction func menuTapped(sender: AnyObject) {
+        delegate?.toggleLeftPanel?()
     }
 
 }
