@@ -10,16 +10,17 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-@objc
-protocol MapViewControllerDelegate {
-    optional func toggleLeftPanel()
-    optional func collapseSidePanels()
-}
+//@objc
+//protocol MapViewControllerDelegate {
+//    optional func toggleLeftPanel()
+//    optional func collapseSidePanels()
+//}
 
 class MapViewController: UIViewController {
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
-    var delegate: MapViewControllerDelegate?
+//    var delegate: MapViewControllerDelegate?
     
     override func loadView() {
         super.loadView()
@@ -70,6 +71,11 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -82,9 +88,9 @@ class MapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func menuTapped(sender: AnyObject) {
-        delegate?.toggleLeftPanel?()
-    }
+//    @IBAction func menuTapped(sender: AnyObject) {
+//        delegate?.toggleLeftPanel?()
+//    }
 
 }
 

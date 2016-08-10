@@ -8,6 +8,10 @@
 
 import UIKit
 
+//protocol SlideMenuDelegate {
+//    func slideMenuItemSelectedAtIndex(index : Int32)
+//}
+
 class SidePanelViewController: UIViewController {
 
     override func viewDidLoad() {

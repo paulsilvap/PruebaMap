@@ -18,10 +18,11 @@ class ItineraryViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var delegate: MapViewControllerDelegate?
-    
+//    var delegate: MapViewControllerDelegate?
+//    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        addSlideMenuButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,8 +30,8 @@ class ItineraryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func menuTapped(sender: AnyObject) {
-        delegate?.toggleLeftPanel?()
-    }
+//    @IBAction func menuTapped(sender: AnyObject) {
+//        delegate?.toggleLeftPanel?()
+//    }
     
 }

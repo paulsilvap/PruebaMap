@@ -30,25 +30,19 @@ class NavButton: UIButton {
             let linePath = UIBezierPath()
             linePath.lineWidth = lineThick
             
-            //start point of line
-            linePath.moveToPoint(CGPoint(
-                x: bounds.width/2 - lineLenght/2,
-                y: 6.0 * CGFloat(line) + marginGap
-                ))
+            // start point of line
+            linePath.moveToPoint(CGPoint(x: bounds.width/2 - lineLenght/2, y: 6.0 * CGFloat(line) + marginGap))
             
-            //end point of line
-            linePath.addLineToPoint(CGPoint(
-                x: bounds.width/2 + lineLenght/2,
-                y: 6.0 * CGFloat(line) + marginGap
-                ))
-            //set line color
+            // end point of line
+            linePath.addLineToPoint(CGPoint(x: bounds.width/2 + lineLenght/2, y: 6.0 * CGFloat(line) + marginGap))
+            
+            // set line color
             lineColor.setStroke()
             
-            //draw the line
+            // draw the line
             linePath.stroke()
         }
         
-        
     }
-
+    
 }
