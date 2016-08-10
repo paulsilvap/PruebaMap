@@ -28,6 +28,7 @@
 		815CCFE41D53D98800527260 /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CCFE31D53D98800527260 /* RateViewController.swift */; };
 		815CCFE61D53DBDC00527260 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CCFE51D53DBDC00527260 /* ContainerViewController.swift */; };
 		815CCFE81D53F38000527260 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CCFE71D53F38000527260 /* SidePanelViewController.swift */; };
+		8187C2421D5947C7009C272B /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187C2411D5947C7009C272B /* OptionViewController.swift */; };
 		81B9E74B1D4BF68200567D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9E74A1D4BF68200567D1C /* AppDelegate.swift */; };
 		81B9E74D1D4BF68200567D1C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9E74C1D4BF68200567D1C /* MapViewController.swift */; };
 		81B9E7501D4BF68200567D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81B9E74E1D4BF68200567D1C /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 		815CCFE31D53D98800527260 /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
 		815CCFE51D53DBDC00527260 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		815CCFE71D53F38000527260 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
+		8187C2411D5947C7009C272B /* OptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		81B9E7471D4BF68200567D1C /* PruebaMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PruebaMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81B9E74A1D4BF68200567D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81B9E74C1D4BF68200567D1C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -187,12 +189,13 @@
 			children = (
 				815CCFD91D52839400527260 /* Image */,
 				81B9E74A1D4BF68200567D1C /* AppDelegate.swift */,
-				81B9E74C1D4BF68200567D1C /* MapViewController.swift */,
-				815CCFDB1D53A8D700527260 /* RouteViewController.swift */,
-				815CCFE31D53D98800527260 /* RateViewController.swift */,
-				815CCFE11D53D5C500527260 /* ItineraryViewController.swift */,
-				815CCFDF1D53C8AF00527260 /* NavButton.swift */,
 				815CCFE51D53DBDC00527260 /* ContainerViewController.swift */,
+				815CCFE11D53D5C500527260 /* ItineraryViewController.swift */,
+				81B9E74C1D4BF68200567D1C /* MapViewController.swift */,
+				815CCFDF1D53C8AF00527260 /* NavButton.swift */,
+				8187C2411D5947C7009C272B /* OptionViewController.swift */,
+				815CCFE31D53D98800527260 /* RateViewController.swift */,
+				815CCFDB1D53A8D700527260 /* RouteViewController.swift */,
 				815CCFE71D53F38000527260 /* SidePanelViewController.swift */,
 				81B9E74E1D4BF68200567D1C /* Main.storyboard */,
 				81B9E7511D4BF68200567D1C /* Assets.xcassets */,
@@ -514,6 +517,7 @@
 			files = (
 				815CCFE41D53D98800527260 /* RateViewController.swift in Sources */,
 				81B9E74D1D4BF68200567D1C /* MapViewController.swift in Sources */,
+				8187C2421D5947C7009C272B /* OptionViewController.swift in Sources */,
 				815CCFE61D53DBDC00527260 /* ContainerViewController.swift in Sources */,
 				815CCFE21D53D5C500527260 /* ItineraryViewController.swift in Sources */,
 				815CCFE81D53F38000527260 /* SidePanelViewController.swift in Sources */,

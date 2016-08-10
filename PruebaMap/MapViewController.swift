@@ -13,7 +13,6 @@ import GooglePlaces
 @objc
 protocol MapViewControllerDelegate {
     optional func toggleLeftPanel()
-    optional func toggleRightPanel()
     optional func collapseSidePanels()
 }
 

@@ -1,23 +1,18 @@
 //
-//  RouteViewController.swift
+//  OptionViewController.swift
 //  PruebaMap
 //
-//  Created by Paul Silva on 8/4/16.
+//  Created by Paul Silva on 8/8/16.
 //  Copyright © 2016 Paul Silva. All rights reserved.
 //
 
 import UIKit
-import GoogleMaps
-import GooglePlaces
 
-class RouteViewController: UIViewController {
+class OptionViewController: UIViewController {
 
-    override func loadView() {
-        super.loadView()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 
