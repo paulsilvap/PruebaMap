@@ -83,21 +83,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ruta" id="n7t-Iz-qGs">
-                        <barButtonItem key="leftBarButtonItem" id="lr6-AK-GhC">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="66e-pB-qgd" customClass="NavButton" customModule="PruebaMap" customModuleProvider="target">
-                                <rect key="frame" x="20" y="11" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="menuTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SmI-fG-uCA"/>
-                                </connections>
-                            </button>
-                            <connections>
-                                <action selector="menuTapped:" destination="BYZ-38-t0r" id="cH7-H8-Z0Y"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="pj0-wv-b67">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="menuButton" destination="pj0-wv-b67" id="xiZ-vl-nef"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Puo-QE-8kw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -131,22 +125,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Itinerario" id="b61-UL-XX7">
-                        <barButtonItem key="leftBarButtonItem" id="tXW-IU-uE8">
-                            <button key="customView" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gY9-JH-LaA" customClass="NavButton" customModule="PruebaMap" customModuleProvider="target">
-                                <rect key="frame" x="20" y="11" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="menuTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lry-Wa-rbM"/>
-                                    <action selector="menuTapped:" destination="Kvk-7x-IQB" eventType="touchUpInside" id="VaX-vh-rfm"/>
-                                </connections>
-                            </button>
-                            <connections>
-                                <action selector="menuTapped:" destination="BYZ-38-t0r" id="RYF-FC-Waf"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="U92-zg-rJC">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchBar" destination="piM-eJ-wTy" id="P4Z-Bi-cW9"/>
+                        <outlet property="menuButton" destination="U92-zg-rJC" id="Djj-92-SzM"/>
+                        <outlet property="searchBar" destination="piM-eJ-wTy" id="ZFB-rx-Fae"/>
                         <outlet property="searchDisplayController" destination="DI2-12-B6v" id="CGW-Gm-W5O"/>
                     </connections>
                 </viewController>
@@ -177,19 +162,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Calificar Servicio" id="RwZ-hf-kAw">
-                        <barButtonItem key="leftBarButtonItem" id="FPk-to-Dnf">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2FN-93-9dP" customClass="NavButton" customModule="PruebaMap" customModuleProvider="target">
-                                <rect key="frame" x="20" y="11" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="menuTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tQf-YR-Bfb"/>
-                                </connections>
-                            </button>
-                            <connections>
-                                <action selector="menuTapped:" destination="BYZ-38-t0r" id="Ink-9k-C8g"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="LSO-w7-i2s">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="LSO-w7-i2s" id="ZDK-2T-tX4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeX-As-UrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -215,30 +194,45 @@
                                         <state key="normal" title="Paradas">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Pdk-o4-h7H" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Hmh-qj-Zj4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sge-uS-RQo">
                                         <rect key="frame" x="38" y="138" width="554" height="30"/>
                                         <state key="normal" title="Itinerario">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="OCb-h3-eoA" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="PU8-V7-eSu"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWS-dW-5CU">
                                         <rect key="frame" x="38" y="183" width="554" height="30"/>
                                         <state key="normal" title="Opciones">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="y8e-E0-Pjv" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="tJl-1b-9E9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAp-ds-27j">
                                         <rect key="frame" x="38" y="228" width="554" height="30"/>
                                         <state key="normal" title="Calificar Servicio">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="TKe-3L-W8e" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Aai-eb-hml"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSA-JG-s0e">
                                         <rect key="frame" x="38" y="93" width="554" height="30"/>
                                         <state key="normal" title="Recorrido">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="MSl-9N-tiV" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="3ba-f5-1fL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -288,19 +282,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Opciones" id="gFT-y2-7Sz">
-                        <barButtonItem key="leftBarButtonItem" id="ulm-1c-PDM">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9DI-2z-Qpd" customClass="NavButton" customModule="PruebaMap" customModuleProvider="target">
-                                <rect key="frame" x="20" y="11" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="menuTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="71i-5u-lEa"/>
-                                </connections>
-                            </button>
-                            <connections>
-                                <action selector="menuTapped:" destination="BYZ-38-t0r" id="jnw-Ml-WQe"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="fMg-Lu-hjf">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="fMg-Lu-hjf" id="etW-sE-8fr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KtJ-lM-6gH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -427,4 +415,7 @@
     <resources>
         <image name="menu" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="qGA-7g-XOo"/>
+    </inferredMetricsTieBreakers>
 </document>
