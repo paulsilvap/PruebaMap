@@ -189,17 +189,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYv-Us-uMb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfH-n6-apt">
-                                        <rect key="frame" x="38" y="48" width="554" height="30"/>
-                                        <state key="normal" title="Paradas">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="Pdk-o4-h7H" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Hmh-qj-Zj4"/>
-                                        </connections>
-                                    </button>
+                                    <navigationBar userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBr-6A-3RP">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="88"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="88" id="QIR-fG-dIi"/>
+                                        </constraints>
+                                        <color key="barTintColor" red="1" green="0.3411764706" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </navigationBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sge-uS-RQo">
-                                        <rect key="frame" x="38" y="138" width="554" height="30"/>
+                                        <rect key="frame" x="38" y="202" width="554" height="30"/>
                                         <state key="normal" title="Itinerario">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -208,7 +206,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWS-dW-5CU">
-                                        <rect key="frame" x="38" y="183" width="554" height="30"/>
+                                        <rect key="frame" x="38" y="247" width="554" height="30"/>
                                         <state key="normal" title="Opciones">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -217,7 +215,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAp-ds-27j">
-                                        <rect key="frame" x="38" y="228" width="554" height="30"/>
+                                        <rect key="frame" x="38" y="292" width="554" height="30"/>
                                         <state key="normal" title="Calificar Servicio">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -226,7 +224,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSA-JG-s0e">
-                                        <rect key="frame" x="38" y="93" width="554" height="30"/>
+                                        <rect key="frame" x="38" y="157" width="554" height="30"/>
                                         <state key="normal" title="Recorrido">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -234,13 +232,24 @@
                                             <segue destination="MSl-9N-tiV" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="3ba-f5-1fL"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfH-n6-apt">
+                                        <rect key="frame" x="38" y="112" width="554" height="30"/>
+                                        <state key="normal" title="Paradas">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Pdk-o4-h7H" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Hmh-qj-Zj4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="CBr-6A-3RP" firstAttribute="leading" secondItem="kYv-Us-uMb" secondAttribute="leadingMargin" constant="-8" id="04O-Vz-0dd"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="dWS-dW-5CU" secondAttribute="trailing" id="6VX-Xu-j3f"/>
                                     <constraint firstItem="MfH-n6-apt" firstAttribute="trailing" secondItem="kYv-Us-uMb" secondAttribute="trailingMargin" id="GZo-J4-bog"/>
                                     <constraint firstItem="sge-uS-RQo" firstAttribute="leading" secondItem="kYv-Us-uMb" secondAttribute="leadingMargin" constant="30" id="Ldw-bJ-2EB"/>
-                                    <constraint firstItem="MfH-n6-apt" firstAttribute="top" secondItem="kYv-Us-uMb" secondAttribute="topMargin" constant="40" id="V3G-5w-fIk"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="CBr-6A-3RP" secondAttribute="trailing" constant="-8" id="Pgz-SJ-eEf"/>
+                                    <constraint firstItem="MfH-n6-apt" firstAttribute="top" secondItem="kYv-Us-uMb" secondAttribute="top" constant="112" id="V3G-5w-fIk"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="eAp-ds-27j" secondAttribute="trailing" id="ady-7y-LzR"/>
                                     <constraint firstItem="MfH-n6-apt" firstAttribute="leading" secondItem="kYv-Us-uMb" secondAttribute="leadingMargin" constant="30" id="cJ4-hc-Whv"/>
                                     <constraint firstItem="dWS-dW-5CU" firstAttribute="top" secondItem="sge-uS-RQo" secondAttribute="bottom" constant="15" id="e9u-NI-qmE"/>
@@ -250,6 +259,7 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="sge-uS-RQo" secondAttribute="trailing" id="sXh-Bv-hCh"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="HSA-JG-s0e" secondAttribute="trailing" id="tZn-tg-7K1"/>
                                     <constraint firstItem="HSA-JG-s0e" firstAttribute="top" secondItem="MfH-n6-apt" secondAttribute="bottom" constant="15" id="wOF-yp-FGh"/>
+                                    <constraint firstItem="CBr-6A-3RP" firstAttribute="top" secondItem="kYv-Us-uMb" secondAttribute="topMargin" constant="-8" id="wZW-wO-DJV"/>
                                     <constraint firstItem="HSA-JG-s0e" firstAttribute="leading" secondItem="kYv-Us-uMb" secondAttribute="leadingMargin" constant="30" id="yYV-Gp-ggi"/>
                                     <constraint firstItem="eAp-ds-27j" firstAttribute="top" secondItem="dWS-dW-5CU" secondAttribute="bottom" constant="15" id="z1o-G5-8bW"/>
                                 </constraints>
@@ -416,6 +426,6 @@
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qGA-7g-XOo"/>
+        <segue reference="Hmh-qj-Zj4"/>
     </inferredMetricsTieBreakers>
 </document>

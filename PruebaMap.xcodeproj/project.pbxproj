@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		380FB275225FF40826084DF4 /* Pods_PruebaMapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1DBF9D2C4D99A06A87F2259 /* Pods_PruebaMapTests.framework */; };
 		812BC2C11D5BD78700AD3AEF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812BC2C01D5BD78700AD3AEF /* SWRevealViewController.m */; };
+		812BC2C31D5D05AB00AD3AEF /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812BC2C21D5D05AB00AD3AEF /* HomeModel.swift */; };
+		812BC2C51D5D05D100AD3AEF /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812BC2C41D5D05D100AD3AEF /* LocationModel.swift */; };
 		815CCFCB1D52837A00527260 /* aeroplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815CCFBD1D52837A00527260 /* aeroplane@2x.png */; };
 		815CCFCC1D52837A00527260 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815CCFBE1D52837A00527260 /* arrow@2x.png */; };
 		815CCFCD1D52837A00527260 /* australia-large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815CCFBF1D52837A00527260 /* australia-large@2x.png */; };
@@ -64,6 +66,8 @@
 		812BC2BE1D5BD78600AD3AEF /* PruebaMap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PruebaMap-Bridging-Header.h"; sourceTree = "<group>"; };
 		812BC2BF1D5BD78700AD3AEF /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		812BC2C01D5BD78700AD3AEF /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		812BC2C21D5D05AB00AD3AEF /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		812BC2C41D5D05D100AD3AEF /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		815CCFBD1D52837A00527260 /* aeroplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "aeroplane@2x.png"; path = "../aeroplane@2x.png"; sourceTree = "<group>"; };
 		815CCFBE1D52837A00527260 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow@2x.png"; path = "../arrow@2x.png"; sourceTree = "<group>"; };
 		815CCFBF1D52837A00527260 /* australia-large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "australia-large@2x.png"; path = "../australia-large@2x.png"; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 				81B9E7511D4BF68200567D1C /* Assets.xcassets */,
 				81B9E7531D4BF68200567D1C /* LaunchScreen.storyboard */,
 				81B9E7561D4BF68200567D1C /* Info.plist */,
+				812BC2C21D5D05AB00AD3AEF /* HomeModel.swift */,
+				812BC2C41D5D05D100AD3AEF /* LocationModel.swift */,
 			);
 			path = PruebaMap;
 			sourceTree = "<group>";
@@ -532,7 +538,9 @@
 			files = (
 				815CCFE41D53D98800527260 /* RateViewController.swift in Sources */,
 				81B9E74D1D4BF68200567D1C /* MapViewController.swift in Sources */,
+				812BC2C31D5D05AB00AD3AEF /* HomeModel.swift in Sources */,
 				8187C2421D5947C7009C272B /* OptionViewController.swift in Sources */,
+				812BC2C51D5D05D100AD3AEF /* LocationModel.swift in Sources */,
 				815CCFE61D53DBDC00527260 /* ContainerViewController.swift in Sources */,
 				815CCFE21D53D5C500527260 /* ItineraryViewController.swift in Sources */,
 				815CCFE81D53F38000527260 /* SidePanelViewController.swift in Sources */,
