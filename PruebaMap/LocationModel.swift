@@ -40,6 +40,7 @@ class LocationModel: NSObject {
     // prints object's current state
     
     override var description: String {
+        print("Id: \(id), Name: \(name), Latitude: \(lat), Longitude: \(long), Route: \(route),")
         return "Id: \(id), Name: \(name), Latitude: \(lat), Longitude: \(long), Route: \(route),"
     }
     

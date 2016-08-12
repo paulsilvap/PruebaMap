@@ -159,7 +159,29 @@
                     <view key="view" contentMode="scaleToFill" id="p7S-Gf-QEn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BQW-UG-whS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicCell" rowHeight="40" id="aDB-Ah-CI0">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDB-Ah-CI0" id="GES-gs-ldu">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BQW-UG-whS" firstAttribute="bottom" secondItem="pHF-W5-TW1" secondAttribute="top" id="0jD-nH-WDX"/>
+                            <constraint firstAttribute="trailing" secondItem="BQW-UG-whS" secondAttribute="trailing" id="eUc-Zj-aFi"/>
+                            <constraint firstItem="BQW-UG-whS" firstAttribute="leading" secondItem="p7S-Gf-QEn" secondAttribute="leading" id="hCx-uh-dze"/>
+                            <constraint firstItem="BQW-UG-whS" firstAttribute="top" secondItem="p7S-Gf-QEn" secondAttribute="top" id="pA1-qZ-ZT0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calificar Servicio" id="RwZ-hf-kAw">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="LSO-w7-i2s">
@@ -167,6 +189,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="listTableView" destination="BQW-UG-whS" id="Dzg-wP-6n9"/>
                         <outlet property="menuButton" destination="LSO-w7-i2s" id="ZDK-2T-tX4"/>
                     </connections>
                 </viewController>
@@ -196,6 +219,15 @@
                                         </constraints>
                                         <color key="barTintColor" red="1" green="0.3411764706" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                     </navigationBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfH-n6-apt">
+                                        <rect key="frame" x="38" y="112" width="554" height="30"/>
+                                        <state key="normal" title="Paradas">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Pdk-o4-h7H" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Hmh-qj-Zj4"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sge-uS-RQo">
                                         <rect key="frame" x="38" y="202" width="554" height="30"/>
                                         <state key="normal" title="Itinerario">
@@ -214,15 +246,6 @@
                                             <segue destination="y8e-E0-Pjv" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="tJl-1b-9E9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAp-ds-27j">
-                                        <rect key="frame" x="38" y="292" width="554" height="30"/>
-                                        <state key="normal" title="Calificar Servicio">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="TKe-3L-W8e" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Aai-eb-hml"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSA-JG-s0e">
                                         <rect key="frame" x="38" y="157" width="554" height="30"/>
                                         <state key="normal" title="Recorrido">
@@ -232,13 +255,13 @@
                                             <segue destination="MSl-9N-tiV" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="3ba-f5-1fL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfH-n6-apt">
-                                        <rect key="frame" x="38" y="112" width="554" height="30"/>
-                                        <state key="normal" title="Paradas">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAp-ds-27j">
+                                        <rect key="frame" x="38" y="292" width="554" height="30"/>
+                                        <state key="normal" title="Calificar Servicio">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Pdk-o4-h7H" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Hmh-qj-Zj4"/>
+                                            <segue destination="TKe-3L-W8e" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Aai-eb-hml"/>
                                         </connections>
                                     </button>
                                 </subviews>

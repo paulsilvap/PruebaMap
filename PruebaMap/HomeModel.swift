@@ -64,11 +64,12 @@ class HomeModel: NSObject, NSURLSessionDataDelegate {
         
         for i in 0 ..< jsonResult.count {
             jsonElement = jsonResult[i] as! NSDictionary
+            print(jsonElement)
             
             let location = LocationModel()
             
             // the following ensures none of the JsonElement values are nil through optional binding
-            if let id = jsonElement["Id"] as? String, let name = jsonElement["Name"] as? String, let lat = jsonElement["Latitude"] as? String, let long = jsonElement["Longitude"] as? String, let route = jsonElement["Route"] as? String{
+            if let id = jsonElement["id"] as? String, let name = jsonElement["nombre"] as? String, let lat = jsonElement["latitud"] as? String, let long = jsonElement["longitud"] as? String, let route = jsonElement["ruta"] as? String{
                 location.id = id
                 location.name = name
                 location.lat = lat
@@ -77,11 +78,13 @@ class HomeModel: NSObject, NSURLSessionDataDelegate {
             }
             
             locations.addObject(location)
+            // print(locations)
         }
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             
             self.delegate.itemsDownloaded(locations)
+            // self.delegate.itemsDownloaded(jsonElement)
             
         })
     
