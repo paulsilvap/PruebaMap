@@ -25,7 +25,7 @@ class RateViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        //set delegates and initialize homeModel
+        // set delegates and initialize homeModel
         
         self.listTableView.delegate = self
         self.listTableView.dataSource = self
@@ -38,7 +38,6 @@ class RateViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func itemsDownloaded(items: NSArray) {
         feedItems = items
-        // print(feedItems)
         self.listTableView.reloadData()
     }
     
@@ -53,17 +52,13 @@ class RateViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let myCell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
         // Get the location to be shown
         let item: LocationModel = feedItems[indexPath.row] as! LocationModel
-        // print(item)
         // Get referencees to labels of cell
-        myCell.textLabel!.text = item.id
-        // print(item.route)
-        
+        myCell.textLabel!.text = item.lat
         return myCell
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

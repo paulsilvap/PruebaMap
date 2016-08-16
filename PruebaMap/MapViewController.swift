@@ -10,22 +10,23 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-//@objc
-//protocol MapViewControllerDelegate {
-//    optional func toggleLeftPanel()
-//    optional func collapseSidePanels()
-//}
-
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal {
+    
+    // Properties
+    
+    var feedItems: NSArray = NSArray()
+    var selectedLocation: LocationModel = LocationModel()
+    var latArray: [String]! = []
+    var longArray: [String]! = []
+    var routeArray: [String]! = []
+    var nameArray: [String]! = []
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    
-//    var delegate: MapViewControllerDelegate?
-    
+
     override func loadView() {
         super.loadView()
         // Do any additional setup after loading the view, typically from a nib.
-        let camera = GMSCameraPosition.cameraWithLatitude(0.419193, longitude: -78.189943, zoom: 14)
+        let camera = GMSCameraPosition.cameraWithLatitude(4.637070, longitude: -74.069943, zoom: 14)
         mapView.camera = camera
         
         // set a limit for the zoom
@@ -44,28 +45,7 @@ class MapViewController: UIViewController {
         // mapView.settings.compassButton = true
         mapView.settings.myLocationButton = true
         
-        // The myLocation attribute of the mapView may be null
-//        if let mylocation = mapView.myLocation {
-//            print("User's location: \(mylocation)")
-//        } else {
-//            print("User's location is unknown")
-//        }
-        
-        // marker
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(0.419193, -78.189943)
-        marker.icon = GMSMarker.markerImageWithColor(UIColor.blackColor())
-        marker.title = "Innopolis"
-        marker.snippet = "Ciudad Yachay - Centro de Innovaciòn"
-        marker.map = mapView
-        
-        let calle_guzman = GMSMarker()
-        calle_guzman.position = CLLocationCoordinate2DMake(0.418110, -78.193866)
-        calle_guzman.title = "Calle Guzmán"
-        calle_guzman.snippet = "Calle en la ciudad de Urcuquí"
-//        calle_guzman.icon = UIImage(named: "sadcloud")
-        calle_guzman.icon = UIImage(named: "downarrow")
-        calle_guzman.map = mapView
+        self.mapView.delegate = self
     }
     
     override func viewDidLoad() {
@@ -75,9 +55,40 @@ class MapViewController: UIViewController {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            
+            let homeModel = HomeModel()
+            homeModel.delegate = self
+            homeModel.downloadItems()
         }
     }
 
+    func itemsDownloaded(items: NSArray) {
+        feedItems = items
+        latLongRoute(&latArray, &longArray, &nameArray, &routeArray)
+        // markers
+        for i in 0..<latArray.count {
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2DMake(Double(latArray[i])!, Double(longArray[i])!)
+            marker.icon = GMSMarker.markerImageWithColor(UIColor.blackColor())
+            marker.title = nameArray[i]
+//            marker.snippet = routeArray[i]
+    //        marker.icon = UIImage(named: "downarrow")
+            marker.map = mapView
+        }
+    }
+    
+    func latLongRoute(inout latArray: [String]!, inout _ longArray: [String]!, inout _ nameArray: [String]!, inout _ routeArray: [String]!) {
+        var item: LocationModel!
+        for i in 0..<feedItems.count {
+            item = feedItems[i] as! LocationModel
+            latArray.append(item.lat!)
+            longArray.append(item.long!)
+            nameArray.append(String(UTF8String: item.name!)!)
+            routeArray.append(String(UTF8String: item.route!)!)
+        }
+        print(routeArray)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -85,12 +96,7 @@ class MapViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-//    @IBAction func menuTapped(sender: AnyObject) {
-//        delegate?.toggleLeftPanel?()
-//    }
 
 }
 

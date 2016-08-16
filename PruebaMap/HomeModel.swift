@@ -64,27 +64,34 @@ class HomeModel: NSObject, NSURLSessionDataDelegate {
         
         for i in 0 ..< jsonResult.count {
             jsonElement = jsonResult[i] as! NSDictionary
-            print(jsonElement)
             
             let location = LocationModel()
             
-            // the following ensures none of the JsonElement values are nil through optional binding
-            if let id = jsonElement["id"] as? String, let name = jsonElement["nombre"] as? String, let lat = jsonElement["latitud"] as? String, let long = jsonElement["longitud"] as? String, let route = jsonElement["ruta"] as? String{
+            // The following ensures none of the JsonElement values are nil through optional binding. Make sure all elements have value otherwise the if statement will not run. Also, make the optional binding with the correct type of the variable
+            if let id = jsonElement["id"] as? String, let name = jsonElement["nombre"] as? String, let lat = jsonElement["latitud"] as? Float, let long = jsonElement["longitud"] as? Float, let route = jsonElement["rutas"] as? NSArray {
                 location.id = id
                 location.name = name
-                location.lat = lat
-                location.long = long
-                location.route = route
+                location.lat = String(lat)
+                location.long = String(long)
+                if String(route) == "(\n)" {
+                    location.route = "( )"
+                } else {
+                    var routearray: [String]! = []
+                    for i in 0..<route.count {
+                        routearray.append((route[i] as? String)!)
+                    }
+                    print(routearray)
+                    location.route = String(routearray)
+                    print(location.route)
+                }
             }
             
             locations.addObject(location)
-            // print(locations)
         }
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             
             self.delegate.itemsDownloaded(locations)
-            // self.delegate.itemsDownloaded(jsonElement)
             
         })
     

@@ -26,10 +26,8 @@
 		815CCFD71D52837A00527260 /* step7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815CCFC91D52837A00527260 /* step7@2x.png */; };
 		815CCFD81D52837A00527260 /* step8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815CCFCA1D52837A00527260 /* step8@2x.png */; };
 		815CCFDC1D53A8D700527260 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CCFDB1D53A8D700527260 /* RouteViewController.swift */; };
-		815CCFE01D53C8AF00527260 /* NavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CCFDF1D53C8AF00527260 /* NavButton.swift */; };
 		815CCFE21D53D5C500527260 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CCFE11D53D5C500527260 /* ItineraryViewController.swift */; };
 		815CCFE41D53D98800527260 /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CCFE31D53D98800527260 /* RateViewController.swift */; };
-		815CCFE61D53DBDC00527260 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CCFE51D53DBDC00527260 /* ContainerViewController.swift */; };
 		815CCFE81D53F38000527260 /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CCFE71D53F38000527260 /* SidePanelViewController.swift */; };
 		8187C2421D5947C7009C272B /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8187C2411D5947C7009C272B /* OptionViewController.swift */; };
 		81B9E74B1D4BF68200567D1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9E74A1D4BF68200567D1C /* AppDelegate.swift */; };
@@ -83,10 +81,8 @@
 		815CCFC91D52837A00527260 /* step7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "step7@2x.png"; path = "../step7@2x.png"; sourceTree = "<group>"; };
 		815CCFCA1D52837A00527260 /* step8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "step8@2x.png"; path = "../step8@2x.png"; sourceTree = "<group>"; };
 		815CCFDB1D53A8D700527260 /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
-		815CCFDF1D53C8AF00527260 /* NavButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavButton.swift; sourceTree = "<group>"; };
 		815CCFE11D53D5C500527260 /* ItineraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
 		815CCFE31D53D98800527260 /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
-		815CCFE51D53DBDC00527260 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		815CCFE71D53F38000527260 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		8187C2411D5947C7009C272B /* OptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		81B9E7471D4BF68200567D1C /* PruebaMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PruebaMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,23 +201,21 @@
 		81B9E7491D4BF68200567D1C /* PruebaMap */ = {
 			isa = PBXGroup;
 			children = (
-				812BC2BD1D5BD73C00AD3AEF /* SWRevealViewController */,
-				815CCFD91D52839400527260 /* Image */,
 				81B9E74A1D4BF68200567D1C /* AppDelegate.swift */,
-				815CCFE51D53DBDC00527260 /* ContainerViewController.swift */,
 				815CCFE11D53D5C500527260 /* ItineraryViewController.swift */,
 				81B9E74C1D4BF68200567D1C /* MapViewController.swift */,
-				815CCFDF1D53C8AF00527260 /* NavButton.swift */,
 				8187C2411D5947C7009C272B /* OptionViewController.swift */,
 				815CCFE31D53D98800527260 /* RateViewController.swift */,
 				815CCFDB1D53A8D700527260 /* RouteViewController.swift */,
 				815CCFE71D53F38000527260 /* SidePanelViewController.swift */,
+				812BC2C21D5D05AB00AD3AEF /* HomeModel.swift */,
+				812BC2C41D5D05D100AD3AEF /* LocationModel.swift */,
 				81B9E74E1D4BF68200567D1C /* Main.storyboard */,
 				81B9E7511D4BF68200567D1C /* Assets.xcassets */,
 				81B9E7531D4BF68200567D1C /* LaunchScreen.storyboard */,
 				81B9E7561D4BF68200567D1C /* Info.plist */,
-				812BC2C21D5D05AB00AD3AEF /* HomeModel.swift */,
-				812BC2C41D5D05D100AD3AEF /* LocationModel.swift */,
+				815CCFD91D52839400527260 /* Image */,
+				812BC2BD1D5BD73C00AD3AEF /* SWRevealViewController */,
 			);
 			path = PruebaMap;
 			sourceTree = "<group>";
@@ -541,13 +535,11 @@
 				812BC2C31D5D05AB00AD3AEF /* HomeModel.swift in Sources */,
 				8187C2421D5947C7009C272B /* OptionViewController.swift in Sources */,
 				812BC2C51D5D05D100AD3AEF /* LocationModel.swift in Sources */,
-				815CCFE61D53DBDC00527260 /* ContainerViewController.swift in Sources */,
 				815CCFE21D53D5C500527260 /* ItineraryViewController.swift in Sources */,
 				815CCFE81D53F38000527260 /* SidePanelViewController.swift in Sources */,
 				81B9E74B1D4BF68200567D1C /* AppDelegate.swift in Sources */,
 				812BC2C11D5BD78700AD3AEF /* SWRevealViewController.m in Sources */,
 				815CCFDC1D53A8D700527260 /* RouteViewController.swift in Sources */,
-				815CCFE01D53C8AF00527260 /* NavButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +750,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89248724F0AD7C6DBC378901 /* Pods-PruebaMapUITests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
 				INFOPLIST_FILE = PruebaMapUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = prueba.PruebaMapUITests;
