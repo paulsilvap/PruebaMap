@@ -20,7 +20,7 @@ class HomeModel: NSObject, NSURLSessionDataDelegate {
     
     var data : NSMutableData = NSMutableData()
     
-    let urlPath: String = "http://10.20.4.185:8000/app/stops/?format=json"
+    let urlPath: String = "http://10.20.4.69:8000/app/stops/?format=json"
     
     func downloadItems() {
         
@@ -76,13 +76,11 @@ class HomeModel: NSObject, NSURLSessionDataDelegate {
                 if String(route) == "(\n)" {
                     location.route = "( )"
                 } else {
-                    var routearray: [String]! = []
+                    var routearray: String = ""
                     for i in 0..<route.count {
-                        routearray.append((route[i] as? String)!)
+                        routearray += ("(\(route[i])) ")
                     }
-                    print(routearray)
-                    location.route = String(routearray)
-                    print(location.route)
+                    location.route = routearray
                 }
             }
             

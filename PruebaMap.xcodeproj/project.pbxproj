@@ -85,6 +85,7 @@
 		815CCFE31D53D98800527260 /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
 		815CCFE71D53F38000527260 /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidePanelViewController.swift; sourceTree = "<group>"; };
 		8187C2411D5947C7009C272B /* OptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
+		81B673A81D64EFFC00466CF5 /* Bogota, Colombia.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Bogota, Colombia.gpx"; sourceTree = "<group>"; };
 		81B9E7471D4BF68200567D1C /* PruebaMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PruebaMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81B9E74A1D4BF68200567D1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81B9E74C1D4BF68200567D1C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 				81B9E74A1D4BF68200567D1C /* AppDelegate.swift */,
 				815CCFE11D53D5C500527260 /* ItineraryViewController.swift */,
 				81B9E74C1D4BF68200567D1C /* MapViewController.swift */,
+				81B673A81D64EFFC00466CF5 /* Bogota, Colombia.gpx */,
 				8187C2411D5947C7009C272B /* OptionViewController.swift */,
 				815CCFE31D53D98800527260 /* RateViewController.swift */,
 				815CCFDB1D53A8D700527260 /* RouteViewController.swift */,

@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal {
+class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal, CLLocationManagerDelegate {
     
     // Properties
     
@@ -22,11 +22,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
     var nameArray: [String]! = []
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var locationManager = CLLocationManager()
+    var didFindMyLocation = false
 
     override func loadView() {
         super.loadView()
         // Do any additional setup after loading the view, typically from a nib.
-        let camera = GMSCameraPosition.cameraWithLatitude(4.637070, longitude: -74.069943, zoom: 14)
+        let camera = GMSCameraPosition.cameraWithLatitude(4.62170, longitude: -74.060243, zoom: 14)
         mapView.camera = camera
         
         // set a limit for the zoom
@@ -37,15 +39,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
         
         // enable accessibility
         mapView.accessibilityElementsHidden = false
-        
-        // enable My Location Function
-        mapView.myLocationEnabled = true
-        
-        // enable My Location and Compass buttons
-        // mapView.settings.compassButton = true
-        mapView.settings.myLocationButton = true
-        
-        self.mapView.delegate = self
+
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewDidLoad() {
@@ -55,10 +51,34 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
+        // set delegates and initialize homeModel
+        
+        self.mapView.delegate = self
+        
+        let homeModel = HomeModel()
+        homeModel.delegate = self
+        homeModel.downloadItems()
+        
+        mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.New, context: nil)
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+            // enable My Location Function
+            mapView.myLocationEnabled = true
+        }
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if !didFindMyLocation {
+            let myLocation: CLLocation = change![NSKeyValueChangeNewKey] as! CLLocation
+            mapView.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 14)
+            // enable My Location button
+            mapView.settings.myLocationButton = true
             
-            let homeModel = HomeModel()
-            homeModel.delegate = self
-            homeModel.downloadItems()
+            didFindMyLocation = true
         }
     }
 
@@ -71,7 +91,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
             marker.position = CLLocationCoordinate2DMake(Double(latArray[i])!, Double(longArray[i])!)
             marker.icon = GMSMarker.markerImageWithColor(UIColor.blackColor())
             marker.title = nameArray[i]
-//            marker.snippet = routeArray[i]
+            marker.snippet = routeArray[i]
     //        marker.icon = UIImage(named: "downarrow")
             marker.map = mapView
         }
@@ -85,8 +105,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
             longArray.append(item.long!)
             nameArray.append(String(UTF8String: item.name!)!)
             routeArray.append(String(UTF8String: item.route!)!)
+            print(item.route!)
         }
-        print(routeArray)
     }
     
     override func viewDidLayoutSubviews() {
