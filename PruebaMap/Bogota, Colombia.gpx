@@ -19,10 +19,10 @@
          <name>Bogota</name>
          <time>2016-08-17T14:55:37Z</time>
     </wpt>
-    
-    <wpt lat="4.643692" lon="-74.075183">
+ 
+     <!-- <wpt lat="4.643692" lon="-74.075183">
          <name>Bogota1</name>
          <time>2016-08-17T14:56:57Z</time>
-	</wpt>
+	</wpt> -->
     
 </gpx>

@@ -20,7 +20,7 @@ class HomeModel: NSObject, NSURLSessionDataDelegate {
     
     var data : NSMutableData = NSMutableData()
     
-    let urlPath: String = "http://10.20.4.69:8000/app/stops/?format=json"
+    let urlPath: String = "http://192.168.0.4:8000/app/stops/?format=json"
     
     func downloadItems() {
         

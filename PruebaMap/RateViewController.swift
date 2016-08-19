@@ -33,7 +33,6 @@ class RateViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let homeModel = HomeModel()
         homeModel.delegate = self
         homeModel.downloadItems()
-        
     }
     
     func itemsDownloaded(items: NSArray) {

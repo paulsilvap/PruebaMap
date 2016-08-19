@@ -15,19 +15,18 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
     // Properties
     
     var feedItems: NSArray = NSArray()
-    var selectedLocation: LocationModel = LocationModel()
-    var latArray: [String]! = []
-    var longArray: [String]! = []
-    var routeArray: [String]! = []
-    var nameArray: [String]! = []
+//    var selectedLocation: LocationModel = LocationModel()
+    var latArray: [String]!
+    var longArray: [String]!
+    var routeArray: [String]!
+    var nameArray: [String]!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var locationManager = CLLocationManager()
+    var locationManager: CLLocationManager!
     var didFindMyLocation = false
-
+    
     override func loadView() {
         super.loadView()
-        // Do any additional setup after loading the view, typically from a nib.
         let camera = GMSCameraPosition.cameraWithLatitude(4.62170, longitude: -74.060243, zoom: 14)
         mapView.camera = camera
         
@@ -39,9 +38,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
         
         // enable accessibility
         mapView.accessibilityElementsHidden = false
-
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
     }
     
     override func viewDidLoad() {
@@ -51,6 +47,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.mapView.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
         // set delegates and initialize homeModel
@@ -61,30 +58,60 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
         homeModel.delegate = self
         homeModel.downloadItems()
         
-        mapView.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.New, context: nil)
+        // initialize Location Manager (avoid initializing when declaring the property)
+        initLocationManager()
+    }
+    
+    func initLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+//        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+            
             // enable My Location Function
-            mapView.myLocationEnabled = true
+            self.mapView.myLocationEnabled = true
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if !didFindMyLocation {
-            let myLocation: CLLocation = change![NSKeyValueChangeNewKey] as! CLLocation
-            mapView.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 14)
-            // enable My Location button
-            mapView.settings.myLocationButton = true
+            let newLocation = locations.last
+//            NSLog(String(newLocation!.coordinate), "%d")
+            mapView.camera = GMSCameraPosition.cameraWithTarget(newLocation!.coordinate, zoom: mapView.camera.zoom)
             
             didFindMyLocation = true
         }
+        
+        mapView.settings.myLocationButton = true
     }
 
     func itemsDownloaded(items: NSArray) {
         feedItems = items
         latLongRoute(&latArray, &longArray, &nameArray, &routeArray)
+        drawMarker()
+    }
+    
+    func latLongRoute(inout latArray: [String]!, inout _ longArray: [String]!, inout _ nameArray: [String]!, inout _ routeArray: [String]!) {
+        var item: LocationModel!
+        latArray = []
+        longArray = []
+        nameArray = []
+        routeArray = []
+        for i in 0..<feedItems.count {
+            item = feedItems[i] as! LocationModel
+            latArray.append(item.lat!)
+            longArray.append(item.long!)
+            nameArray.append(String(UTF8String: item.name!)!)
+            routeArray.append(String(UTF8String: item.route!)!)
+        }
+    }
+    
+    func drawMarker() {
         // markers
         for i in 0..<latArray.count {
             let marker = GMSMarker()
@@ -92,31 +119,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
             marker.icon = GMSMarker.markerImageWithColor(UIColor.blackColor())
             marker.title = nameArray[i]
             marker.snippet = routeArray[i]
-    //        marker.icon = UIImage(named: "downarrow")
+            //        marker.icon = UIImage(named: "downarrow")
             marker.map = mapView
         }
     }
     
-    func latLongRoute(inout latArray: [String]!, inout _ longArray: [String]!, inout _ nameArray: [String]!, inout _ routeArray: [String]!) {
-        var item: LocationModel!
-        for i in 0..<feedItems.count {
-            item = feedItems[i] as! LocationModel
-            latArray.append(item.lat!)
-            longArray.append(item.long!)
-            nameArray.append(String(UTF8String: item.name!)!)
-            routeArray.append(String(UTF8String: item.route!)!)
-            print(item.route!)
-        }
+    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+        // avoid moving camera when pressing marker
+        mapView.selectedMarker = marker
+        return true
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
 }
 
