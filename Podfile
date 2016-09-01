@@ -10,11 +10,16 @@ target 'PruebaMap' do
   # Pods for PruebaMap
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  # pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git' '
+  pod 'SwiftyJSON'
+  pod 'Alamofire'
 
   target 'PruebaMapTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
+    pod 'SwiftyJSON'
+    pod 'Alamofire'
   end
 
   target 'PruebaMapUITests' do

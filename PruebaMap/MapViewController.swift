@@ -8,41 +8,49 @@
 
 import UIKit
 import GoogleMaps
-import GooglePlaces
+import SwiftyJSON
+import CoreData
 
-class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal, CLLocationManagerDelegate {
+class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerDelegate {
     
-    // Properties
+    // MARK: -
+    // MARK: Properties
     
-    var feedItems: NSArray = NSArray()
-//    var selectedLocation: LocationModel = LocationModel()
-    var latArray: [String]!
-    var longArray: [String]!
-    var routeArray: [String]!
-    var nameArray: [String]!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     var locationManager: CLLocationManager!
     var didFindMyLocation = false
+    var managedObjectContext: NSManagedObjectContext!
+    
+    // MARK: -
+    // MARK: Manage View Controller
     
     override func loadView() {
         super.loadView()
-        let camera = GMSCameraPosition.cameraWithLatitude(4.62170, longitude: -74.060243, zoom: 14)
+
+        let zoom = zoomDevice()
+        
+        let camera = GMSCameraPosition.cameraWithLatitude(4.661475, longitude: -74.059930, zoom: zoom)
         mapView.camera = camera
         
         // set a limit for the zoom
-        mapView.setMinZoom(10, maxZoom: 16)
+        mapView.setMinZoom(10, maxZoom: zoom+2)
         
         // disable indoor view
         mapView.indoorEnabled = false
         
         // enable accessibility
         mapView.accessibilityElementsHidden = false
+        
+        self.mapView.delegate = self
+        
+        // initialize homeModel
+        fetchNextStops()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -50,17 +58,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
             self.mapView.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        // set delegates and initialize homeModel
-        
-        self.mapView.delegate = self
-        
-        let homeModel = HomeModel()
-        homeModel.delegate = self
-        homeModel.downloadItems()
-        
         // initialize Location Manager (avoid initializing when declaring the property)
         initLocationManager()
     }
+    
+    // MARK: -
+    // MARK: Initializers
     
     func initLocationManager() {
         locationManager = CLLocationManager()
@@ -69,6 +72,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
+    
+    // MARK: -
+    // MARK: Location Manager
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
@@ -81,7 +87,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if !didFindMyLocation {
             let newLocation = locations.last
-//            NSLog(String(newLocation!.coordinate), "%d")
             mapView.camera = GMSCameraPosition.cameraWithTarget(newLocation!.coordinate, zoom: mapView.camera.zoom)
             
             didFindMyLocation = true
@@ -90,44 +95,101 @@ class MapViewController: UIViewController, GMSMapViewDelegate, HomeModelProtocal
         mapView.settings.myLocationButton = true
     }
 
-    func itemsDownloaded(items: NSArray) {
-        feedItems = items
-        latLongRoute(&latArray, &longArray, &nameArray, &routeArray)
-        drawMarker()
+    // MARK: -
+    // MARK: Methods
+    
+    func fetchNextStops() {
+        let homeModel = HomeModel()
+        let urlPath = "http://192.168.0.50:8000/app/stops/"
+        homeModel.getOrders(urlPath, completionHandler: { responseObject, error in
+            if responseObject.isEmpty {
+                print(error)
+            } else {
+                self.storeFetched(responseObject)
+            }
+            return
+        })
     }
     
-    func latLongRoute(inout latArray: [String]!, inout _ longArray: [String]!, inout _ nameArray: [String]!, inout _ routeArray: [String]!) {
-        var item: LocationModel!
-        latArray = []
-        longArray = []
-        nameArray = []
-        routeArray = []
-        for i in 0..<feedItems.count {
-            item = feedItems[i] as! LocationModel
-            latArray.append(item.lat!)
-            longArray.append(item.long!)
-            nameArray.append(String(UTF8String: item.name!)!)
-            routeArray.append(String(UTF8String: item.route!)!)
+    func storeFetched(json: JSON) {
+        
+        //  Fetch saved data
+        let fetchRequest = NSFetchRequest(entityName: "Stop")
+        
+        // Create Entity
+        let entity = NSEntityDescription.entityForName("Stop", inManagedObjectContext: self.managedObjectContext)
+        
+        for json in json.array! {
+            let stopId = json["id"].string
+            let predicate = NSPredicate(format: "%K == %@", "id", stopId!)
+            fetchRequest.predicate = predicate
+            
+            do {
+                let fetchedResults = try self.managedObjectContext.executeFetchRequest(fetchRequest) as? [Stop]
+                if let results = fetchedResults {
+                    if (results.count > 0) {
+                        continue
+                    }
+                }
+            } catch {
+                let fetchError = error as NSError
+                print("\(fetchError), \(fetchError.userInfo)")
+            }
+            
+            let record = Stop(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
+            record.id = json["id"].string!
+            record.name = json["nombre"].string!
+            record.latitude = json["latitud"].double!
+            record.longitude = json["longitud"].double!
+            if json["rutas"].isEmpty {
+                record.route = "( )"
+            } else {
+                var routeArray: String = ""
+                for j in 0..<json["rutas"].count {
+                    routeArray += ("(\(json["rutas",j])) ")
+                }
+                record.route = routeArray
+            }
+        }
+        do {
+            // Save Record
+            try managedObjectContext?.save()
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
         }
     }
     
     func drawMarker() {
-        // markers
-        for i in 0..<latArray.count {
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2DMake(Double(latArray[i])!, Double(longArray[i])!)
-            marker.icon = GMSMarker.markerImageWithColor(UIColor.blackColor())
-            marker.title = nameArray[i]
-            marker.snippet = routeArray[i]
-            //        marker.icon = UIImage(named: "downarrow")
-            marker.map = mapView
+        //  Fetch saved data
+        let fetchRequest = NSFetchRequest(entityName: "Stop")
+        
+        do {
+            let fetchedResults = try self.managedObjectContext.executeFetchRequest(fetchRequest) as? [Stop]
+            for entity in fetchedResults! {
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2DMake(entity.latitude, entity.longitude)
+                marker.icon = GMSMarker.markerImageWithColor(UIColor.brownColor())
+                marker.title = entity.id
+                marker.snippet = entity.route
+                marker.map = mapView
+            }
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
         }
     }
     
-    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
-        // avoid moving camera when pressing marker
-        mapView.selectedMarker = marker
-        return true
+    func zoomDevice() -> Float {
+        let bounds = UIScreen.mainScreen().bounds
+        let width = bounds.size.width
+        let height = bounds.size.height
+        let radius: CGFloat = 1.00 // in hundred meters
+        let zoomHeight = log((height/radius)*CGFloat(124.43359375))/log(2)
+        let zoomWidth = log((width/radius)*CGFloat(124.43359375))/log(2)
+        let zoom = Float((zoomHeight+zoomWidth)/2)
+        return zoom
     }
+    
 }
 

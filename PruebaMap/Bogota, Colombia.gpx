@@ -15,7 +15,7 @@
      Waypoints must be sorted by time in ascending order.
      -->
     
-    <wpt lat="4.621705" lon="-74.060237">
+    <wpt lat="4.661475" lon="-74.059930">
          <name>Bogota</name>
          <time>2016-08-17T14:55:37Z</time>
     </wpt>

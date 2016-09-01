@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class RateViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HomeModelProtocal {
-
-    // Properties
+class RateViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var feedItems: NSArray = NSArray()
-    var selectedLocation: LocationModel = LocationModel()
+    // MARK: -
+    // MARK: Properties
+    
+//    var selectedLocation: LocationModel = LocationModel()
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -29,35 +30,43 @@ class RateViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.listTableView.delegate = self
         self.listTableView.dataSource = self
+//        self.listTableView.reloadData()
         
-        let homeModel = HomeModel()
-        homeModel.delegate = self
-        homeModel.downloadItems()
     }
     
-    func itemsDownloaded(items: NSArray) {
-        feedItems = items
-        self.listTableView.reloadData()
-    }
+//    func itemsDownloaded(items: JSON) {
+//        feedItems = items
+//        self.listTableView.reloadData()
+//    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of feed items
-        return feedItems.count
+//        return feedItems.count
+        return 11
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Retrieve cell
         let cellIdentifier: String = "BasicCell"
         let myCell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
-        // Get the location to be shown
-        let item: LocationModel = feedItems[indexPath.row] as! LocationModel
-        // Get referencees to labels of cell
-        myCell.textLabel!.text = item.lat
+//        // Get the location to be shown
+//        let item = feedItems[indexPath.row]
+//        // Get references to labels of cell
+//        if item["paradas"].isEmpty {
+//            myCell.textLabel!.text = "()"
+//        } else {
+//            var routeArray: String = ""
+//            for j in 0..<item["paradas"].count {
+//                routeArray += ("(\(item["paradas",j])) ")
+//            }
+//            myCell.textLabel!.text = String(routeArray)
+//        }
+//        myCell.textLabel!.text = String(item["paradas"])
         return myCell
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }

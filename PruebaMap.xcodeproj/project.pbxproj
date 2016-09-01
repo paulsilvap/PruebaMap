@@ -10,7 +10,6 @@
 		380FB275225FF40826084DF4 /* Pods_PruebaMapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1DBF9D2C4D99A06A87F2259 /* Pods_PruebaMapTests.framework */; };
 		812BC2C11D5BD78700AD3AEF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 812BC2C01D5BD78700AD3AEF /* SWRevealViewController.m */; };
 		812BC2C31D5D05AB00AD3AEF /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812BC2C21D5D05AB00AD3AEF /* HomeModel.swift */; };
-		812BC2C51D5D05D100AD3AEF /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812BC2C41D5D05D100AD3AEF /* LocationModel.swift */; };
 		815CCFCB1D52837A00527260 /* aeroplane@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815CCFBD1D52837A00527260 /* aeroplane@2x.png */; };
 		815CCFCC1D52837A00527260 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815CCFBE1D52837A00527260 /* arrow@2x.png */; };
 		815CCFCD1D52837A00527260 /* australia-large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815CCFBF1D52837A00527260 /* australia-large@2x.png */; };
@@ -37,6 +36,9 @@
 		81B9E7551D4BF68200567D1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81B9E7531D4BF68200567D1C /* LaunchScreen.storyboard */; };
 		81B9E7601D4BF68200567D1C /* PruebaMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9E75F1D4BF68200567D1C /* PruebaMapTests.swift */; };
 		81B9E76B1D4BF68300567D1C /* PruebaMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9E76A1D4BF68300567D1C /* PruebaMapUITests.swift */; };
+		81F024C31D6CA3DF0054E7DF /* PruebaMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 81F024C11D6CA3DF0054E7DF /* PruebaMap.xcdatamodeld */; };
+		81FC00B01D78DDA40072FBC9 /* Stop+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FC00AE1D78DDA40072FBC9 /* Stop+CoreDataProperties.swift */; };
+		81FC00B11D78DDA40072FBC9 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FC00AF1D78DDA40072FBC9 /* Stop.swift */; };
 		93E790762295CC4077A6C4DF /* Pods_PruebaMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C67070214A1B886C91D8F7 /* Pods_PruebaMap.framework */; };
 		B3F916EBF7FD2DAFCE6FA13D /* Pods_PruebaMapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99FCDF4FF2E61A8B9DF43B0E /* Pods_PruebaMapUITests.framework */; };
 /* End PBXBuildFile section */
@@ -65,7 +67,6 @@
 		812BC2BF1D5BD78700AD3AEF /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		812BC2C01D5BD78700AD3AEF /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		812BC2C21D5D05AB00AD3AEF /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
-		812BC2C41D5D05D100AD3AEF /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		815CCFBD1D52837A00527260 /* aeroplane@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "aeroplane@2x.png"; path = "../aeroplane@2x.png"; sourceTree = "<group>"; };
 		815CCFBE1D52837A00527260 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow@2x.png"; path = "../arrow@2x.png"; sourceTree = "<group>"; };
 		815CCFBF1D52837A00527260 /* australia-large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "australia-large@2x.png"; path = "../australia-large@2x.png"; sourceTree = "<group>"; };
@@ -99,6 +100,9 @@
 		81B9E7661D4BF68300567D1C /* PruebaMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PruebaMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81B9E76A1D4BF68300567D1C /* PruebaMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaMapUITests.swift; sourceTree = "<group>"; };
 		81B9E76C1D4BF68300567D1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81F024C21D6CA3DF0054E7DF /* PruebaMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PruebaMap.xcdatamodel; sourceTree = "<group>"; };
+		81FC00AE1D78DDA40072FBC9 /* Stop+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Stop+CoreDataProperties.swift"; path = "PruebaMap/Stop+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		81FC00AF1D78DDA40072FBC9 /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stop.swift; path = PruebaMap/Stop.swift; sourceTree = "<group>"; };
 		89248724F0AD7C6DBC378901 /* Pods-PruebaMapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PruebaMapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PruebaMapUITests/Pods-PruebaMapUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99FCDF4FF2E61A8B9DF43B0E /* Pods_PruebaMapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PruebaMapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A818073E44DA26146A028E89 /* Pods-PruebaMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PruebaMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PruebaMap/Pods-PruebaMap.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +184,8 @@
 		81B9E73E1D4BF68200567D1C = {
 			isa = PBXGroup;
 			children = (
+				81FC00AE1D78DDA40072FBC9 /* Stop+CoreDataProperties.swift */,
+				81FC00AF1D78DDA40072FBC9 /* Stop.swift */,
 				81B9E7491D4BF68200567D1C /* PruebaMap */,
 				81B9E75E1D4BF68200567D1C /* PruebaMapTests */,
 				81B9E7691D4BF68300567D1C /* PruebaMapUITests */,
@@ -203,19 +209,14 @@
 			isa = PBXGroup;
 			children = (
 				81B9E74A1D4BF68200567D1C /* AppDelegate.swift */,
-				815CCFE11D53D5C500527260 /* ItineraryViewController.swift */,
-				81B9E74C1D4BF68200567D1C /* MapViewController.swift */,
+				81F024C41D6CAE9F0054E7DF /* Controllers */,
 				81B673A81D64EFFC00466CF5 /* Bogota, Colombia.gpx */,
-				8187C2411D5947C7009C272B /* OptionViewController.swift */,
-				815CCFE31D53D98800527260 /* RateViewController.swift */,
-				815CCFDB1D53A8D700527260 /* RouteViewController.swift */,
-				815CCFE71D53F38000527260 /* SidePanelViewController.swift */,
 				812BC2C21D5D05AB00AD3AEF /* HomeModel.swift */,
-				812BC2C41D5D05D100AD3AEF /* LocationModel.swift */,
 				81B9E74E1D4BF68200567D1C /* Main.storyboard */,
 				81B9E7511D4BF68200567D1C /* Assets.xcassets */,
 				81B9E7531D4BF68200567D1C /* LaunchScreen.storyboard */,
 				81B9E7561D4BF68200567D1C /* Info.plist */,
+				81F024C11D6CA3DF0054E7DF /* PruebaMap.xcdatamodeld */,
 				815CCFD91D52839400527260 /* Image */,
 				812BC2BD1D5BD73C00AD3AEF /* SWRevealViewController */,
 			);
@@ -238,6 +239,19 @@
 				81B9E76C1D4BF68300567D1C /* Info.plist */,
 			);
 			path = PruebaMapUITests;
+			sourceTree = "<group>";
+		};
+		81F024C41D6CAE9F0054E7DF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				815CCFE11D53D5C500527260 /* ItineraryViewController.swift */,
+				81B9E74C1D4BF68200567D1C /* MapViewController.swift */,
+				8187C2411D5947C7009C272B /* OptionViewController.swift */,
+				815CCFE31D53D98800527260 /* RateViewController.swift */,
+				815CCFDB1D53A8D700527260 /* RouteViewController.swift */,
+				815CCFE71D53F38000527260 /* SidePanelViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		A92A23164A3DF7F02A71A30A /* Pods */ = {
@@ -532,11 +546,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81FC00B01D78DDA40072FBC9 /* Stop+CoreDataProperties.swift in Sources */,
 				815CCFE41D53D98800527260 /* RateViewController.swift in Sources */,
+				81F024C31D6CA3DF0054E7DF /* PruebaMap.xcdatamodeld in Sources */,
 				81B9E74D1D4BF68200567D1C /* MapViewController.swift in Sources */,
 				812BC2C31D5D05AB00AD3AEF /* HomeModel.swift in Sources */,
 				8187C2421D5947C7009C272B /* OptionViewController.swift in Sources */,
-				812BC2C51D5D05D100AD3AEF /* LocationModel.swift in Sources */,
+				81FC00B11D78DDA40072FBC9 /* Stop.swift in Sources */,
 				815CCFE21D53D5C500527260 /* ItineraryViewController.swift in Sources */,
 				815CCFE81D53F38000527260 /* SidePanelViewController.swift in Sources */,
 				81B9E74B1D4BF68200567D1C /* AppDelegate.swift in Sources */,
@@ -801,6 +817,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		81F024C11D6CA3DF0054E7DF /* PruebaMap.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				81F024C21D6CA3DF0054E7DF /* PruebaMap.xcdatamodel */,
+			);
+			currentVersion = 81F024C21D6CA3DF0054E7DF /* PruebaMap.xcdatamodel */;
+			path = PruebaMap.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 81B9E73F1D4BF68200567D1C /* Project object */;
 }
