@@ -107,7 +107,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
     
     func fetchNextStops() {
         let homeModel = HomeModel()
-        let urlPath = "http://192.168.0.50:8000/app/stops/"
+        let urlPath = "http://192.168.0.200:8000/app/stops/"
         homeModel.getOrders(urlPath, completionHandler: { responseObject, error in
             if responseObject.isEmpty {
                 print(error)
