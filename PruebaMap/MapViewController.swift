@@ -20,7 +20,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
     @IBOutlet weak var menuButton: UIBarButtonItem!
     var locationManager: CLLocationManager!
     var didFindMyLocation = false
-    var managedObjectContext: NSManagedObjectContext!
+    var managedObjectContext: NSManagedObjectContext?
     
     // MARK: -
     // MARK: Manage View Controller
@@ -43,9 +43,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
         mapView.accessibilityElementsHidden = false
         
         self.mapView.delegate = self
-        
-        // initialize homeModel
-        fetchNextStops()
+    
     }
     
     override func viewDidLoad() {
@@ -60,6 +58,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
         
         // initialize Location Manager (avoid initializing when declaring the property)
         initLocationManager()
+        
+        // Obtain an instance of managedObjectContext
+        managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        // initialize homeModel
+        fetchNextStops()
+        
+        // Draw Markers
+        self.drawMarker()
     }
     
     // MARK: -
@@ -104,6 +111,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
         homeModel.getOrders(urlPath, completionHandler: { responseObject, error in
             if responseObject.isEmpty {
                 print(error)
+                
+                // Draw Markers
+                self.drawMarker()
+                
             } else {
                 self.storeFetched(responseObject)
             }
@@ -117,7 +128,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
         let fetchRequest = NSFetchRequest(entityName: "Stop")
         
         // Create Entity
-        let entity = NSEntityDescription.entityForName("Stop", inManagedObjectContext: self.managedObjectContext)
+        let entity = NSEntityDescription.entityForName("Stop", inManagedObjectContext: self.managedObjectContext!)
         
         for json in json.array! {
             let stopId = json["id"].string
@@ -125,7 +136,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
             fetchRequest.predicate = predicate
             
             do {
-                let fetchedResults = try self.managedObjectContext.executeFetchRequest(fetchRequest) as? [Stop]
+                let fetchedResults = try self.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Stop]
                 if let results = fetchedResults {
                     if (results.count > 0) {
                         continue
@@ -158,14 +169,17 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
             let saveError = error as NSError
             print("\(saveError), \(saveError.userInfo)")
         }
+        
+        // Draw Markers
+        self.drawMarker()
     }
     
     func drawMarker() {
-        //  Fetch saved data
+        // Fetch saved data
         let fetchRequest = NSFetchRequest(entityName: "Stop")
         
         do {
-            let fetchedResults = try self.managedObjectContext.executeFetchRequest(fetchRequest) as? [Stop]
+            let fetchedResults = try self.managedObjectContext!.executeFetchRequest(fetchRequest) as? [Stop]
             for entity in fetchedResults! {
                 let marker = GMSMarker()
                 marker.position = CLLocationCoordinate2DMake(entity.latitude, entity.longitude)

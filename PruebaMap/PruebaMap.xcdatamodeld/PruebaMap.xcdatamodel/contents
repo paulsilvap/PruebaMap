@@ -5,7 +5,7 @@
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="route" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="route" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Stop" positionX="-54" positionY="-9" width="128" height="120"/>
