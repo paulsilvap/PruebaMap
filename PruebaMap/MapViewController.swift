@@ -13,8 +13,7 @@ import CoreData
 
 class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerDelegate {
     
-    // MARK: -
-    // MARK: Properties
+    // MARK: - Properties
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -22,8 +21,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
     var didFindMyLocation = false
     var managedObjectContext: NSManagedObjectContext?
     
-    // MARK: -
-    // MARK: Manage View Controller
+    // MARK: - Manage View Controller
     
     override func loadView() {
         super.loadView()
@@ -102,8 +100,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate,CLLocationManagerD
         mapView.settings.myLocationButton = true
     }
 
-    // MARK: -
-    // MARK: Methods
+    // MARK: - Fetch Methods
     
     func fetchNextStops() {
         let homeModel = HomeModel()

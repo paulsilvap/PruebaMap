@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -109,19 +108,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Busca una ruta particular" translatesAutoresizingMaskIntoConstraints="NO" id="piM-eJ-wTy">
-                                <rect key="frame" x="20" y="86" width="560" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Kvk-7x-IQB" id="fAb-IQ-KCd"/>
-                                </connections>
-                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eNG-Xz-phO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItineraryCell" id="WAE-3F-hFZ">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WAE-3F-hFZ" id="j0c-F7-eiE">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="piM-eJ-wTy" firstAttribute="topMargin" secondItem="CzN-Lt-gdW" secondAttribute="bottom" constant="30" id="a1v-Ow-mNE"/>
-                            <constraint firstItem="piM-eJ-wTy" firstAttribute="leading" secondItem="1Ca-uy-TIP" secondAttribute="leadingMargin" id="ep0-9C-1AV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="piM-eJ-wTy" secondAttribute="trailing" id="qlA-6z-VJV"/>
+                            <constraint firstItem="eNG-Xz-phO" firstAttribute="leading" secondItem="1Ca-uy-TIP" secondAttribute="leading" id="IaG-LP-7fB"/>
+                            <constraint firstAttribute="trailing" secondItem="eNG-Xz-phO" secondAttribute="trailing" id="XeF-H2-YaI"/>
+                            <constraint firstItem="eNG-Xz-phO" firstAttribute="top" secondItem="1Ca-uy-TIP" secondAttribute="top" id="frs-TM-6CO"/>
+                            <constraint firstItem="eNG-Xz-phO" firstAttribute="bottom" secondItem="sRM-j6-BYr" secondAttribute="top" id="jgf-Yd-5Gu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Itinerario" id="b61-UL-XX7">
@@ -131,15 +138,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="U92-zg-rJC" id="Djj-92-SzM"/>
-                        <outlet property="searchBar" destination="piM-eJ-wTy" id="ZFB-rx-Fae"/>
                         <outlet property="searchDisplayController" destination="DI2-12-B6v" id="CGW-Gm-W5O"/>
+                        <outlet property="tableView" destination="eNG-Xz-phO" id="tYW-2n-Pre"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqB-t5-y5A" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="DI2-12-B6v">
                     <connections>
                         <outlet property="delegate" destination="Kvk-7x-IQB" id="Bs9-km-rSW"/>
-                        <outlet property="searchBar" destination="piM-eJ-wTy" id="X1I-rm-9fb"/>
                         <outlet property="searchContentsController" destination="Kvk-7x-IQB" id="z7P-Xm-UbU"/>
                         <outlet property="searchResultsDataSource" destination="Kvk-7x-IQB" id="zW8-Or-0JE"/>
                         <outlet property="searchResultsDelegate" destination="Kvk-7x-IQB" id="FIp-K4-ovb"/>
@@ -265,7 +271,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="CBr-6A-3RP" firstAttribute="leading" secondItem="kYv-Us-uMb" secondAttribute="leadingMargin" constant="-8" id="04O-Vz-0dd"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="dWS-dW-5CU" secondAttribute="trailing" id="6VX-Xu-j3f"/>
@@ -449,6 +455,6 @@
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hmh-qj-Zj4"/>
+        <segue reference="qGA-7g-XOo"/>
     </inferredMetricsTieBreakers>
 </document>

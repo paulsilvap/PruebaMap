@@ -65,8 +65,4 @@ class RateViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return myCell
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
 }
