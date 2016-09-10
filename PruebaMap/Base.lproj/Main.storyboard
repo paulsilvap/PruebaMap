@@ -166,27 +166,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BQW-UG-whS">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Uh-Fv-2PK" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="146" y="124" width="310" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicCell" rowHeight="40" id="aDB-Ah-CI0">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="40"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDB-Ah-CI0" id="GES-gs-ldu">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" red="1" green="0.3411764706" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                        <color key="value" red="1" green="0.3411764706" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="filledBorderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BQW-UG-whS" firstAttribute="bottom" secondItem="pHF-W5-TW1" secondAttribute="top" id="0jD-nH-WDX"/>
-                            <constraint firstAttribute="trailing" secondItem="BQW-UG-whS" secondAttribute="trailing" id="eUc-Zj-aFi"/>
-                            <constraint firstItem="BQW-UG-whS" firstAttribute="leading" secondItem="p7S-Gf-QEn" secondAttribute="leading" id="hCx-uh-dze"/>
-                            <constraint firstItem="BQW-UG-whS" firstAttribute="top" secondItem="p7S-Gf-QEn" secondAttribute="top" id="pA1-qZ-ZT0"/>
+                            <constraint firstItem="5Uh-Fv-2PK" firstAttribute="top" secondItem="WcW-QL-2P7" secondAttribute="bottom" constant="60" id="9Vc-0f-F6L"/>
+                            <constraint firstItem="5Uh-Fv-2PK" firstAttribute="centerX" secondItem="p7S-Gf-QEn" secondAttribute="centerX" constant="1" id="xrS-wb-Ksz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calificar Servicio" id="RwZ-hf-kAw">
@@ -195,8 +212,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="listTableView" destination="BQW-UG-whS" id="Dzg-wP-6n9"/>
                         <outlet property="menuButton" destination="LSO-w7-i2s" id="ZDK-2T-tX4"/>
+                        <outlet property="rateController" destination="5Uh-Fv-2PK" id="qyx-iO-Wds"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeX-As-UrN" userLabel="First Responder" sceneMemberID="firstResponder"/>

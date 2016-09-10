@@ -8,14 +8,16 @@
 
 import UIKit
 import SwiftyJSON
+import Cosmos
 
-class RateViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RateViewController: UIViewController { //, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: -
     // MARK: Properties
     
 //    var selectedLocation: LocationModel = LocationModel()
-    @IBOutlet weak var listTableView: UITableView!
+//    @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet weak var rateController: CosmosView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -26,10 +28,15 @@ class RateViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        // set delegates and initialize homeModel
+        rateController.rating = 0
+        rateController.settings.fillMode = .Half
+        rateController.settings.minTouchRating = 0
+        rateController.settings.updateOnTouch = true
         
-        self.listTableView.delegate = self
-        self.listTableView.dataSource = self
+//        // set delegates and initialize homeModel
+//        
+//        self.listTableView.delegate = self
+//        self.listTableView.dataSource = self
 //        self.listTableView.reloadData()
         
     }
@@ -39,30 +46,30 @@ class RateViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        self.listTableView.reloadData()
 //    }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of feed items
-//        return feedItems.count
-        return 11
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Retrieve cell
-        let cellIdentifier: String = "BasicCell"
-        let myCell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
-//        // Get the location to be shown
-//        let item = feedItems[indexPath.row]
-//        // Get references to labels of cell
-//        if item["paradas"].isEmpty {
-//            myCell.textLabel!.text = "()"
-//        } else {
-//            var routeArray: String = ""
-//            for j in 0..<item["paradas"].count {
-//                routeArray += ("(\(item["paradas",j])) ")
-//            }
-//            myCell.textLabel!.text = String(routeArray)
-//        }
-//        myCell.textLabel!.text = String(item["paradas"])
-        return myCell
-    }
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // Return the number of feed items
+////        return feedItems.count
+//        return 11
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        // Retrieve cell
+//        let cellIdentifier: String = "BasicCell"
+//        let myCell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
+////        // Get the location to be shown
+////        let item = feedItems[indexPath.row]
+////        // Get references to labels of cell
+////        if item["paradas"].isEmpty {
+////            myCell.textLabel!.text = "()"
+////        } else {
+////            var routeArray: String = ""
+////            for j in 0..<item["paradas"].count {
+////                routeArray += ("(\(item["paradas",j])) ")
+////            }
+////            myCell.textLabel!.text = String(routeArray)
+////        }
+////        myCell.textLabel!.text = String(item["paradas"])
+//        return myCell
+//    }
     
 }

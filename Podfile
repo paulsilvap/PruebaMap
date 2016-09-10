@@ -12,6 +12,7 @@ target 'PruebaMap' do
   pod 'GooglePlaces'
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'Cosmos', '~> 1.2'
 
   target 'PruebaMapTests' do
     inherit! :search_paths
@@ -20,6 +21,7 @@ target 'PruebaMap' do
     pod 'GooglePlaces'
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'Cosmos', '~> 1.2'
   end
 
   target 'PruebaMapUITests' do
