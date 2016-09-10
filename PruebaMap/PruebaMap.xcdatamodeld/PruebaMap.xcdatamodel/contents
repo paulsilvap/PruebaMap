@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
+    <entity name="Routes" representedClassName=".Routes" syncable="YES">
+        <attribute name="day" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minute" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stop" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Stop" representedClassName=".Stop" syncable="YES">
         <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -9,5 +16,6 @@
     </entity>
     <elements>
         <element name="Stop" positionX="-54" positionY="-9" width="128" height="120"/>
+        <element name="Routes" positionX="-54" positionY="27" width="128" height="120"/>
     </elements>
 </model>
