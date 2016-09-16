@@ -167,7 +167,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Uh-Fv-2PK" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="146" y="124" width="310" height="50"/>
+                                <rect key="frame" x="145" y="159" width="310" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -199,11 +199,43 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VV6-eX-bM4">
+                                <rect key="frame" x="274" y="368" width="53" height="30"/>
+                                <state key="normal" title="ENVIAR">
+                                    <color key="titleColor" red="1" green="0.3411764706" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendButton:" destination="FS9-78-IsF" eventType="touchUpInside" id="dTX-R8-OoN"/>
+                                </connections>
+                            </button>
+                            <textView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzu-92-nPP">
+                                <rect key="frame" x="145" y="224" width="310" height="130"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="168-oN-ol5"/>
+                                    <constraint firstAttribute="width" constant="310" id="zBE-r5-2Lq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre de la ruta, parada o bus a calificar" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYM-YY-43z">
+                                <rect key="frame" x="153" y="114" width="295" height="30"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5Uh-Fv-2PK" firstAttribute="top" secondItem="WcW-QL-2P7" secondAttribute="bottom" constant="60" id="9Vc-0f-F6L"/>
-                            <constraint firstItem="5Uh-Fv-2PK" firstAttribute="centerX" secondItem="p7S-Gf-QEn" secondAttribute="centerX" constant="1" id="xrS-wb-Ksz"/>
+                            <constraint firstItem="vzu-92-nPP" firstAttribute="centerX" secondItem="p7S-Gf-QEn" secondAttribute="centerX" id="1Fy-oX-NJa"/>
+                            <constraint firstItem="VV6-eX-bM4" firstAttribute="top" secondItem="vzu-92-nPP" secondAttribute="bottom" constant="14" id="FIF-PH-4Og"/>
+                            <constraint firstItem="VV6-eX-bM4" firstAttribute="centerX" secondItem="p7S-Gf-QEn" secondAttribute="centerX" id="FZE-D5-7By"/>
+                            <constraint firstItem="UYM-YY-43z" firstAttribute="top" secondItem="WcW-QL-2P7" secondAttribute="bottom" constant="50" id="Vny-wI-kBJ"/>
+                            <constraint firstItem="UYM-YY-43z" firstAttribute="centerX" secondItem="p7S-Gf-QEn" secondAttribute="centerX" id="ZKx-4Y-Dkj"/>
+                            <constraint firstItem="vzu-92-nPP" firstAttribute="top" secondItem="5Uh-Fv-2PK" secondAttribute="bottom" constant="15" id="rfX-SC-Gyz"/>
+                            <constraint firstItem="5Uh-Fv-2PK" firstAttribute="top" secondItem="UYM-YY-43z" secondAttribute="bottom" constant="15" id="wgm-Vj-ZKL"/>
+                            <constraint firstItem="5Uh-Fv-2PK" firstAttribute="centerX" secondItem="p7S-Gf-QEn" secondAttribute="centerX" id="yrJ-bF-fZ2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calificar Servicio" id="RwZ-hf-kAw">
@@ -212,7 +244,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="commentTextView" destination="vzu-92-nPP" id="4An-nd-OOo"/>
                         <outlet property="menuButton" destination="LSO-w7-i2s" id="ZDK-2T-tX4"/>
+                        <outlet property="nameTextField" destination="UYM-YY-43z" id="tVL-aL-CvE"/>
                         <outlet property="rateController" destination="5Uh-Fv-2PK" id="qyx-iO-Wds"/>
                     </connections>
                 </viewController>
